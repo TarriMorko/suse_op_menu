@@ -12,12 +12,17 @@ to_adv_opmenu="0"
 
 check_ID_usability() {
     user_name=$1
-    if [[ "${user_name}" =~ qQ ]]; then
+    if [[ "${user_name}" =~ [qQ] ]]; then
         echo '離開、回到選單。'
         return 2
     fi
 
     if [[ "${user_name}" = "" ]]; then
+        echo '請輸入帳號名稱。'
+        return 1
+    fi
+
+    if [[ "${user_name}" =~ " " ]]; then
         echo '請輸入帳號名稱。'
         return 1
     fi

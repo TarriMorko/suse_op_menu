@@ -30,4 +30,4 @@ oneTimeSetUp() {
     assertTrue 'ErrorLog檔不存在。' "[ -r $ERRFILENAME ]"
 }
 
-. ../shunit2/shunit2
+. ./shunit2
