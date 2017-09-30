@@ -12,7 +12,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-OUTPUT_DIR="/source/sc"
+OUTPUT_DIR="/source/supportconfig"
 file_prefix="$(hostname)_$(date +%Y%m%d_%H%M%S)"
 ScriptName="r2_supportconfig.sh"
 
