@@ -6,7 +6,6 @@
 # show unsuccessful_login_count with specify user.
 ###############################################################################
 
-# . ./mw_hc2.sh
 ScriptName="r1_check_unsuccessful_login_count.sh"
 to_adv_opmenu="0"
 
@@ -39,14 +38,14 @@ show_unsuccessful_login_count() {
     unsuccessful_login_count=$(pam_tally2 -u $user_name |
         tail -n 1 | awk '{print $2}')
     if [[ "${unsuccessful_login_count}" = "" ]]; then
-        echo '無法取得 unsuccessful_login_count'
+        err '無法取得 unsuccessful_login_count'
         return 1
     fi
 
     if [ ${unsuccessful_login_count} -gt 5 ]; then
-        echo "帳號 $user_name 登入密碼錯誤 $unsuccessful_login_count 次，帳號已被鎖定。請帳號擁有者洽資管科解鎖。"
+        writelog "帳號 $user_name 登入密碼錯誤 $unsuccessful_login_count 次，帳號已被鎖定。請帳號擁有者洽資管科解鎖。"
     else
-        echo "帳號 $user_name 登入密碼錯誤 $unsuccessful_login_count 次"
+        writelog "帳號 $user_name 登入密碼錯誤 $unsuccessful_login_count 次"
     fi
 }
 
@@ -60,10 +59,12 @@ main() {
     read user_name
     check_ID_usability $user_name || return $to_adv_opmenu
     show_unsuccessful_login_count
+    echo ''
     show_host_last_login
 }
 
 if [[ "$(basename -- "$0")" == "${ScriptName}" ]]; then
+    source $(dirname -- $0)/writelog.sh
     main
     exit 0
 fi
