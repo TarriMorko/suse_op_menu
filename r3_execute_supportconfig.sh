@@ -11,8 +11,6 @@
 #                                # default). You must specify the absolute path.
 ###############################################################################
 
-ScriptName="execute_supportconfig.sh"
-
 comfirm_and_show_warning() {
     echo "supportconfig 預計執行時間需要 1~10 分鐘。"
     echo "請勿多次執行"
@@ -24,7 +22,7 @@ comfirm_and_show_warning() {
     if [[ "${input}" =~ [Yy]+ ]]; then
         return 0
     else
-        exit 0
+        exit 1
     fi
 }
 
@@ -70,14 +68,7 @@ main() {
     comfirm_and_show_warning
     remove_old_support_dir
     execute_supportconfig || return $to_adv_opmenu
-    $(dirname -- $0)/scp_to_file_server.sh ${OUTPUT_DIR}/nts_${file_prefix}.tgz
+    $ROOT_DIR/scp_to_file_server.sh ${OUTPUT_DIR}/nts_${file_prefix}.tgz
 
 }
-
-if [[ "$(basename -- "$0")" == "${ScriptName}" ]]; then
-    source $(dirname -- $0)/writelog.sh
-    OUTPUT_DIR="/source/supportconfig"
-    file_prefix="$(hostname)_$(date +%Y%m%d_%H%M%S)"
-    main
-    exit 0
-fi
+main

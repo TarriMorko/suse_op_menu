@@ -45,12 +45,13 @@ echo_file_contain_and_store_in_outputdir() {
     mkdir -p ${CAT_OUTPUT_DIR}
     chmod 755 ${CAT_OUTPUT_DIR}
     echo "${input_filename}" >${CAT_OUTPUT_DIR}/$outputfile
+    writelog "檔案儲存至:  ${CAT_OUTPUT_DIR}/$outputfile "
     cat "${input_filename}" | tee -a ${CAT_OUTPUT_DIR}/$outputfile
     chmod 774 ${CAT_OUTPUT_DIR}/$outputfile
 }
 
 transfer_outputfile_to_logserver() {
-    $(dirname -- $0)/tools/scp_to_file_server.sh ${CAT_OUTPUT_DIR}/$outputfile
+    $ROOT_DIR/scp_to_file_server.sh ${CAT_OUTPUT_DIR}/$outputfile
 }
 
 main() {

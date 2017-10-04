@@ -6,12 +6,10 @@
 # Show Top 3 usage of CPU
 ###############################################################################
 
-source $(dirname -- $0)/execute_supportconfig.sh
-
 ## For supportconfig
-OUTPUT_DIR="/source/supportconfig"
-file_prefix="$(hostname)_$(date +%Y%m%d_%H%M%S)"
-CPU_threshold="80"
+# OUTPUT_DIR="/source/supportconfig"
+# file_prefix="$(hostname)_$(date +%Y%m%d_%H%M%S)"
+# CPU_threshold="80"
 
 check_cpu_usage() {
     # Displaying top CPU_consuming processes.
@@ -41,9 +39,8 @@ collect_log_if_CPU_high() {
         writelog "PID 是 $CPU_Highest_PID"
         writelog "process: $CPU_Highest_process cpu high $CPU_Highest_usage%"
         writelog "PID is  $CPU_Highest_PID"
+        $ROOT_DIR/r3_execute_supportconfig.sh
     fi
-    remove_old_support_dir
-    execute_supportconfig
     return 0
 }
 

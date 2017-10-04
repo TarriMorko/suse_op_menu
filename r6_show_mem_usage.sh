@@ -3,15 +3,13 @@
 #
 ###############################################################################
 # r6_show_mem_usage.sh
-# Show Top 3 usage of mem
+# Show Top 3 usage of memory
 ###############################################################################
 
-source $(dirname -- $0)/execute_supportconfig.sh
-
 ## For supportconfig
-OUTPUT_DIR="/source/supportconfig"
-file_prefix="$(hostname)_$(date +%Y%m%d_%H%M%S)"
-mem_threshold="80"
+# OUTPUT_DIR="/source/supportconfig"
+# file_prefix="$(hostname)_$(date +%Y%m%d_%H%M%S)"
+# mem_threshold="80"
 
 check_mem_usage() {
     # Displaying top mem_consuming processes.
@@ -41,15 +39,13 @@ collect_log_if_mem_high() {
         writelog "PID 是 $mem_Highest_PID"
         writelog "process: $mem_Highest_process mem high $mem_Highest_usage%"
         writelog "PID is  $mem_Highest_PID"
+        $ROOT_DIR/r3_execute_supportconfig.sh
     fi
-    remove_old_support_dir
-    execute_supportconfig
     return 0
 }
 
 main() {
     check_mem_usage
     collect_log_if_mem_high
-
 }
 main

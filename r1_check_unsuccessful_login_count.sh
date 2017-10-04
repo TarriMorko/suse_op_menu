@@ -6,7 +6,6 @@
 # show unsuccessful_login_count with specify user.
 ###############################################################################
 
-ScriptName="r1_check_unsuccessful_login_count.sh"
 to_adv_opmenu="0"
 
 check_ID_usability() {
@@ -62,9 +61,4 @@ main() {
     echo ''
     show_host_last_login
 }
-
-if [[ "$(basename -- "$0")" == "${ScriptName}" ]]; then
-    source $(dirname -- $0)/writelog.sh
-    main
-    exit 0
-fi
+main
