@@ -62,7 +62,7 @@ show_main_menu() {
     [R6]
       1. Check unsuccessful login count
       2. System Model
-      3. SuppoRtconfig
+      3. Support Config
       4. Check FileSystem Size
       5. Show CPU usage
       6. Show Memory usage
