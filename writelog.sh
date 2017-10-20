@@ -14,7 +14,7 @@ writelog() {
     # writing in file LOGFILENAME.
     #######################################
     #_caller=$(echo $0 | cut -d'/' -f2)
-    _caller=$(echo ${0##*/} | awk '{print substr($0,1,4)}')
+    _caller=$(echo ${0##*/} | awk '{print substr($0,1,2)}')
     log_message=$@
     echo "$(date +"%Y-%m-%d %H:%M:%S") [$_caller] ${log_message}" | tee -a ${LOGFILENAME}
 }
