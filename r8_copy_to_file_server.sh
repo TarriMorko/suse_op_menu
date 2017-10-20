@@ -16,26 +16,26 @@ readonly outputfile=$(hostname)_$(date +"%Y%m%d_%H%M%S")_r7.txt
 check_filename_usability() {
     input_filename=$1
     if ! [[ "${input_filename}" =~ [0-9a-zA-Z._/]* ]]; then
-        echo '½Ğ¿é¤J¥¿½TÀÉ¦W¡C'
+        echo 'è«‹è¼¸å…¥æ­£ç¢ºæª”åã€‚'
         echo 'filename error.'
         return 1
     fi
 
     if [ -d ${input_filename} ]; then
-        echo '¤£¯à¿é¤J¤@­Ó¥Ø¿ı¡C'
+        echo 'ä¸èƒ½è¼¸å…¥ä¸€å€‹ç›®éŒ„ã€‚'
         echo 'Can not input a directory.'
         return 3
     fi
 
     if ! [ -r ${input_filename} ]; then
-        echo '§ä¤£¨ìÀÉ®×©ÎµLªkÅª¨ú¡C'
+        echo 'æ‰¾ä¸åˆ°æª”æ¡ˆæˆ–ç„¡æ³•è®€å–ã€‚'
         echo 'File not found or can not read file.'
         return 4
     fi
 
     filesize=$(du -m $input_filename | cut -f1)
     if [ "${filesize}" -gt 10 ]; then
-        echo 'ÀÉ®×¶W¹L 10 MB¡C'
+        echo 'æª”æ¡ˆè¶…é 10 MBã€‚'
         echo 'file too large'
         return 5
     fi
@@ -45,7 +45,7 @@ echo_file_contain_and_store_in_outputdir() {
     mkdir -p ${CAT_OUTPUT_DIR}
     chmod 755 ${CAT_OUTPUT_DIR}
     echo "${input_filename}" >${CAT_OUTPUT_DIR}/$outputfile
-    writelog "ÀÉ®×Àx¦s¦Ü:  ${CAT_OUTPUT_DIR}/$outputfile "
+    writelog "æª”æ¡ˆå„²å­˜è‡³:  ${CAT_OUTPUT_DIR}/$outputfile "
     cat "${input_filename}" | tee -a ${CAT_OUTPUT_DIR}/$outputfile
     chmod 774 ${CAT_OUTPUT_DIR}/$outputfile
 }
@@ -57,7 +57,7 @@ transfer_outputfile_to_logserver() {
 main() {
     clear
     find ${CAT_OUTPUT_DIR} -name "*_r7.txt" -exec rm {} \;
-    echo "½Ğ¿é¤J·Q­n¶Ç°eªºÀÉ®×¦WºÙ:"
+    echo "è«‹è¼¸å…¥æƒ³è¦å‚³é€çš„æª”æ¡ˆåç¨±:"
     echo 'Please enter which file you want to transer:'
     read input
     check_filename_usability $input || return $to_adv_opmenu

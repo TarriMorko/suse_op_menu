@@ -16,6 +16,9 @@
 # Read the manual.
 ###############################################################################
 
+export LANG=POSIX
+export LC_ALL=zh_TW.UTF-8
+
 #### Scrtip Setting Start ####
 SCRIPT_VERSION=1.0.0
 export ScriptName="mw_hc2.sh"

@@ -36,12 +36,12 @@ check_log_server_ssh_connection() {
     su opusr -c "ssh $user@$target hostname >/dev/null 2>&1"
     rc=$?
     if [ $rc == "0" ]; then
-        writelog 'ssh ¦¨¥\³s½u¦Ü' "$target."
+        writelog 'ssh æˆåŠŸé€£ç·šè‡³' "$target."
         writelog "ssh connect to $target success."
         echo ''
         return 0
     else
-        err '³s½u¦Ü' "$target" '¥¢±Ñ'
+        err 'é€£ç·šè‡³' "$target" 'å¤±æ•—'
         err "ssh connect to $target fail."
         echo ''
         return 1
@@ -52,9 +52,9 @@ make_remote_directory_and_transfer_file_to_log_server() {
     echo ''
     echo ''
     echo ''
-    su opusr -c "ssh $user@$target mkdir -p $target_directory" || writelog "¦b $target «Ø¥ß $target_directory ¥¢±Ñ"
+    su opusr -c "ssh $user@$target mkdir -p $target_directory" || writelog "åœ¨ $target å»ºç«‹ $target_directory å¤±æ•—"
     su opusr -c "ssh $user@$target chmod 755 $target_directory"
-    writelog '·Ç³Æ¶Ç°eÀÉ®×, ½Ğµy«á...'
+    writelog 'æº–å‚™å‚³é€æª”æ¡ˆ, è«‹ç¨å¾Œ...'
     writelog "prepare to transfer file..."
     echo ''
 
@@ -64,24 +64,24 @@ make_remote_directory_and_transfer_file_to_log_server() {
         writelog "File transfer success, please download at host $target : $target_directory/$filename"
         su opusr -c "ssh $user@$target chmod 744 $target_directory/$filename"
         echo ''
-        writelog "ÀÉ®×¶Ç°e¦¨¥\, ½Ğ¦b $target ¥D¾÷¤U¸ü $target_directory/$filename"
+        writelog "æª”æ¡ˆå‚³é€æˆåŠŸ, è«‹åœ¨ $target ä¸»æ©Ÿä¸‹è¼‰ $target_directory/$filename"
         echo ''
         echo '- - - - - - - - - - - - - - - - - - - - - - -'
-        echo '½Ğ±µÄò¤U¸ü¨BÆJ¡G'
+        echo 'è«‹æ¥çºŒä¸‹è¼‰æ­¥é©Ÿï¼š'
         echo '- - - - - - - - - - - - - - - - - - - - - - -'
-        echo '½Ğ¶}±Ò filezilla'
-        echo '¥D¾÷'"¡G sftp://${target}"
-        echo '¨Ï¥ÎªÌ¦WºÙ¡Gopusr'
-        echo '±K½X¡G <¬dªí>'
-        echo '³s±µ°ğ¡G22'
-        echo '«ö§Ö³t³s½u'
-        echo '»·ºİ¯¸¥x¡G' "$target_directory"
-        echo '«öEnter'
-        echo 'ÀÉ®×¦WºÙ¡G' "$filename"
-        echo 'ÂI¿ï¦¹ÀÉ©Ô¨ì¥ªÃä¿ï³æ¡A§Y¤U¸ü§¹¦¨¡C'
+        echo 'è«‹é–‹å•Ÿ filezilla'
+        echo 'ä¸»æ©Ÿ'"ï¼š sftp://${target}"
+        echo 'ä½¿ç”¨è€…åç¨±ï¼šopusr'
+        echo 'å¯†ç¢¼ï¼š <æŸ¥è¡¨>'
+        echo 'é€£æ¥åŸ ï¼š22'
+        echo 'æŒ‰å¿«é€Ÿé€£ç·š'
+        echo 'é ç«¯ç«™å°ï¼š' "$target_directory"
+        echo 'æŒ‰Enter'
+        echo 'æª”æ¡ˆåç¨±ï¼š' "$filename"
+        echo 'é»é¸æ­¤æª”æ‹‰åˆ°å·¦é‚Šé¸å–®ï¼Œå³ä¸‹è¼‰å®Œæˆã€‚'
         return 0
     else
-        err "ÀÉ®×¶Ç°e¨ì $target ¥¢±Ñ."
+        err "æª”æ¡ˆå‚³é€åˆ° $target å¤±æ•—."
         err "File tranfer to $target fail."
         return 1
     fi
@@ -95,7 +95,7 @@ slient_copy_to_tsm_prod() {
     # ugly
     # user_tsmp=opusr
     # target_tsmp=fxdb2t
-    writelog "¶Ç°eÀÉ®×¦Ü $target_tsmp"
+    writelog "å‚³é€æª”æ¡ˆè‡³ $target_tsmp"
     target_directory_tsmp=${target_root_directory}$(hostname)_$(date +%Y%m%d)
     su opusr -c "ssh $user_tsmp@$target_tsmp mkdir -p $target_directory_tsmp"
     su opusr -c "ssh $user_tsmp@$target_tsmp chmod 755 $target_directory_tsmp"

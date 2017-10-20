@@ -11,24 +11,24 @@ to_adv_opmenu="0"
 check_ID_usability() {
     user_name=$1
     if [[ "${user_name}" =~ [qQ] ]]; then
-        echo 'Â÷¶}¡B¦^¨ì¿ï³æ¡C'
+        echo 'é›¢é–‹ã€å›åˆ°é¸å–®ã€‚'
         return 2
     fi
 
     if [[ "${user_name}" = "" ]]; then
-        echo '½Ğ¿é¤J±b¸¹¦WºÙ¡C'
+        echo 'è«‹è¼¸å…¥å¸³è™Ÿåç¨±ã€‚'
         return 1
     fi
 
     if [[ "${user_name}" =~ " " ]]; then
-        echo '½Ğ¿é¤J±b¸¹¦WºÙ¡C'
+        echo 'è«‹è¼¸å…¥å¸³è™Ÿåç¨±ã€‚'
         return 1
     fi
 
     id $user_name >/dev/null 2>&1
 
     if ! [[ $? -eq 0 ]]; then
-        echo '±b¸¹¿ù»~¡B½Ğ¿é¤J¥¿½T±b¸¹¦WºÙ¡C'
+        echo 'å¸³è™ŸéŒ¯èª¤ã€è«‹è¼¸å…¥æ­£ç¢ºå¸³è™Ÿåç¨±ã€‚'
         return 1
     fi
 }
@@ -37,14 +37,14 @@ show_unsuccessful_login_count() {
     unsuccessful_login_count=$(pam_tally2 -u $user_name |
         tail -n 1 | awk '{print $2}')
     if [[ "${unsuccessful_login_count}" = "" ]]; then
-        err 'µLªk¨ú±o unsuccessful_login_count'
+        err 'ç„¡æ³•å–å¾— unsuccessful_login_count'
         return 1
     fi
 
     if [ ${unsuccessful_login_count} -gt 5 ]; then
-        writelog "±b¸¹ $user_name µn¤J±K½X¿ù»~ $unsuccessful_login_count ¦¸¡A±b¸¹¤w³QÂê©w¡C½Ğ±b¸¹¾Ö¦³ªÌ¬¢¸êºŞ¬ì¸ÑÂê¡C"
+        writelog "å¸³è™Ÿ $user_name ç™»å…¥å¯†ç¢¼éŒ¯èª¤ $unsuccessful_login_count æ¬¡ï¼Œå¸³è™Ÿå·²è¢«é–å®šã€‚è«‹å¸³è™Ÿæ“æœ‰è€…æ´½è³‡ç®¡ç§‘è§£é–ã€‚"
     else
-        writelog "±b¸¹ $user_name µn¤J±K½X¿ù»~ $unsuccessful_login_count ¦¸"
+        writelog "å¸³è™Ÿ $user_name ç™»å…¥å¯†ç¢¼éŒ¯èª¤ $unsuccessful_login_count æ¬¡"
     fi
 }
 
@@ -53,8 +53,8 @@ show_host_last_login() {
 }
 
 main() {
-    echo "½Ğ¿é¤J·Q­nÀË¬dªº¨Ï¥ÎªÌ¦WºÙ:"
-    echo "¿é¤J q ¦^¥D¿ï³æ."
+    echo "è«‹è¼¸å…¥æƒ³è¦æª¢æŸ¥çš„ä½¿ç”¨è€…åç¨±:"
+    echo "è¼¸å…¥ q å›ä¸»é¸å–®."
     read user_name
     check_ID_usability $user_name || return $to_adv_opmenu
     show_unsuccessful_login_count

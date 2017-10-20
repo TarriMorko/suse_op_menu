@@ -23,20 +23,20 @@ check_mem_usage() {
     echo ''
     echo ''
     echo "This Memory_Highest_usage user is"
-    writelog "°O¾ĞÅé¨Ï¥Î²v³Ì°ªªº¨Ï¥ÎªÌ¬O
+    writelog "è¨˜æ†¶é«”ä½¿ç”¨ç‡æœ€é«˜çš„ä½¿ç”¨è€…æ˜¯
 
     \" $mem_Highest_owner \""
     echo ''
     echo ''
-    echo "PID ¬O $mem_Highest_PID"
+    echo "PID æ˜¯ $mem_Highest_PID"
 
     return 0
 }
 
 collect_log_if_mem_high() {
     if [ ${mem_Highest_usage%.*} -ge $mem_threshold ]; then
-        writelog "½Ğ³qª¾¨t²Î­È¯Z¤H­û³B²z¡G¦æµ{ $mem_Highest_process ªº °O¾ĞÅé ¨Ï¥Î²v¹F¨ì $mem_Highest_usage%"
-        writelog "PID ¬O $mem_Highest_PID"
+        writelog "è«‹é€šçŸ¥ç³»çµ±å€¼ç­äººå“¡è™•ç†ï¼šè¡Œç¨‹ $mem_Highest_process çš„ è¨˜æ†¶é«” ä½¿ç”¨ç‡é”åˆ° $mem_Highest_usage%"
+        writelog "PID æ˜¯ $mem_Highest_PID"
         writelog "process: $mem_Highest_process mem high $mem_Highest_usage%"
         writelog "PID is  $mem_Highest_PID"
         $ROOT_DIR/r3_execute_supportconfig.sh

@@ -11,7 +11,7 @@
 ###############################################################################
 
 echo ""
-echo "½Ğ¿é¤J·Q­n§PÂ_¤j¤pªºÀÉ®×¨t²Î¡A©ÎªÌ«ö Enter ¨Ï¥Î¹w³]­È ${defualt_FileSystem}"
+echo "è«‹è¼¸å…¥æƒ³è¦åˆ¤æ–·å¤§å°çš„æª”æ¡ˆç³»çµ±ï¼Œæˆ–è€…æŒ‰ Enter ä½¿ç”¨é è¨­å€¼ ${defualt_FileSystem}"
 echo "Please Enter which FileSystem you want to check:"
 echo "current setting is ${defualt_FileSystem}, press ENTER to use default setting."
 echo ""
@@ -24,7 +24,7 @@ fi
 df -m "${fileSystem}" 2>/dev/null 1>/dev/null
 return_code=$?
 if [ $return_code -ne 0 ]; then
-    err "¿ù»~, µLªkÀË¬d ${fileSystem}."
+    err "éŒ¯èª¤, ç„¡æ³•æª¢æŸ¥ ${fileSystem}."
     echo "Error, Can not check ${fileSystem}."
     exit 1
 fi
@@ -32,9 +32,9 @@ fi
 fileSystemSizeRemain=$(df -m "${fileSystem}" | tail -n 1 | awk '{print $3}')
 
 if [ ${fileSystemSizeRemain} -gt ${SizeLowerLimit} ]; then
-    writelog "${fileSystem} ªÅ¶¡¨¬°÷¡A³Ñ¾l $fileSystemSizeRemain MB"
+    writelog "${fileSystem} ç©ºé–“è¶³å¤ ï¼Œå‰©é¤˜ $fileSystemSizeRemain MB"
     echo "$(hostname) ${fileSystem} enough, $fileSystemSizeRemain MB left."
 else
-    writelog "${fileSystem} ªÅ¶¡¤£¨¬¡A³Ñ¾l $fileSystemSizeRemain MB"
+    writelog "${fileSystem} ç©ºé–“ä¸è¶³ï¼Œå‰©é¤˜ $fileSystemSizeRemain MB"
     echo "$(hostname) ${fileSystem} not enough, $fileSystemSizeRemain MB left."
 fi

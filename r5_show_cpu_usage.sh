@@ -23,20 +23,20 @@ check_cpu_usage() {
     echo ''
     echo ''
     echo "This CPU_Highest_usage user is"
-    writelog "CPU ¨Ï¥Î²v³Ì°ªªº¨Ï¥ÎªÌ¬O
+    writelog "CPU ä½¿ç”¨ç‡æœ€é«˜çš„ä½¿ç”¨è€…æ˜¯
 
     \" $CPU_Highest_owner \""
     echo ''
     echo ''
-    writelog "PID ¬O $CPU_Highest_PID"
+    writelog "PID æ˜¯ $CPU_Highest_PID"
 
     return 0
 }
 
 collect_log_if_CPU_high() {
     if [ ${CPU_Highest_usage%.*} -ge $CPU_threshold ]; then
-        writelog "½Ğ³qª¾¨t²Î­È¯Z¤H­û³B²z¡G¦æµ{ $CPU_Highest_process ªº CPU ¨Ï¥Î²v¹F¨ì $CPU_Highest_usage%"
-        writelog "PID ¬O $CPU_Highest_PID"
+        writelog "è«‹é€šçŸ¥ç³»çµ±å€¼ç­äººå“¡è™•ç†ï¼šè¡Œç¨‹ $CPU_Highest_process çš„ CPU ä½¿ç”¨ç‡é”åˆ° $CPU_Highest_usage%"
+        writelog "PID æ˜¯ $CPU_Highest_PID"
         writelog "process: $CPU_Highest_process cpu high $CPU_Highest_usage%"
         writelog "PID is  $CPU_Highest_PID"
         $ROOT_DIR/r3_execute_supportconfig.sh
