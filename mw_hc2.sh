@@ -1,4 +1,4 @@
-#!/bin/sh
+i #!/bin/sh
 #
 #
 ###############################################################################
@@ -16,8 +16,8 @@
 # Read the manual.
 ###############################################################################
 
-export LANG=POSIX
-export LC_ALL=zh_TW.UTF-8
+#export LANG=POSIX
+#export LC_ALL=zh_TW.UTF-8
 
 #### Scrtip Setting Start ####
 SCRIPT_VERSION=1.0.0

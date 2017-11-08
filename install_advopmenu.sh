@@ -3,14 +3,25 @@ SCRIPT_VERSION=1.0.0
 if ! [ -f /src/mwadmin/mwadmin.sh ]; then
     echo ""
     echo "No /src/mwadmin/mwadmin.sh !  script STOP!"
-    echo "è«‹æ‰‹å‹•å®‰è£"
+    echo "½Ð¤â°Ê¦w¸Ë"
+    echo ""
+    exit
+fi
+
+if ! [ -f /etc/SuSE-release ]; then
+    echo ""
+    echo "³o­Ó script ¥u¯àµ¹ SuSE ¥Î³á!"
     echo ""
     exit
 fi
 
 cd /src/mwadmin
+cp /src/mwadmin/mwadmin.sh /src/mwadmin/mwadmin.sh.$(date +%Y%m%d)
+awk '/^q)/{print "\n" "z)" "\n""  clear" "\n""  echo \"Start adv opmenu at \"$(date)" "\n""  ${HAADMIN_HOME}/mw_hc2.sh" "\n""  echo \"Press enter to continue\"" "\n""  cd / " "\n""  read null" "\n""  ;;" "\n"}1' mwadmin.sh > tmp.$$
+mv tmp.$$ mwadmin.sh
+
 touch mw_hc2.err
-toucn mw_hc2.log
+touch mw_hc2.log
 chmod 640 mw_hc2.err
 chmod 640 mw_hc2.log
 chmod 740 mw_hc2.sh

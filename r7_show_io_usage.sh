@@ -26,20 +26,20 @@ check_disk_usage() {
     echo ''
     echo ''
     echo "This DISK_Highest_usage user is"
-    writelog "DISK ä½¿ç”¨ç‡æœ€é«˜çš„ä½¿ç”¨è€…æ˜¯
+    writelog "DISK ¨Ï¥Î²v³Ì°ªªº¨Ï¥ÎªÌ¬O
 
     \" $DISK_Highest_owner \""
     echo ''
     echo ''
-    writelog "PID æ˜¯ $DISK_Highest_PID"
+    writelog "PID ¬O $DISK_Highest_PID"
 
     return 0
 }
 
 collect_log_if_DISK_high() {
     if [ ${DISK_Highest_usage%.*} -ge $IO_threshold ]; then
-        writelog "è«‹é€šçŸ¥ç³»çµ±å€¼ç­äººå“¡è™•ç†ï¼šè¡Œç¨‹ $DISK_Highest_process çš„ DISK ä½¿ç”¨ç‡é”åˆ° $DISK_Highest_usage%"
-        writelog "PID æ˜¯ $DISK_Highest_PID"
+        writelog "½Ğ³qª¾¨t²Î­È¯Z¤H­û³B²z¡G¦æµ{ $DISK_Highest_process ªº DISK ¨Ï¥Î²v¹F¨ì $DISK_Highest_usage%"
+        writelog "PID ¬O $DISK_Highest_PID"
         writelog "process: $DISK_Highest_process DISK high $DISK_Highest_usage%"
         writelog "PID is  $DISK_Highest_PID"
         $ROOT_DIR/r3_execute_supportconfig.sh

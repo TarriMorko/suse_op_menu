@@ -9,20 +9,20 @@
 GetSystemModel() {
     System_Model=$(dmidecode -s system-product-name)
     if [ "${System_Model}" == "" ]; then
-        writelog 'æŸ¥è©¢æ©Ÿå‹å¤±æ•—'
+        writelog '¬d¸ß¾÷«¬¥¢±Ñ'
     else
-        writelog 'æ­¤æ©Ÿå™¨æ©Ÿå‹æ˜¯' "$System_Model"
-        writelog 'æŸ¥è©¢æ©Ÿå‹æˆåŠŸ'
+        writelog '¦¹¾÷¾¹¾÷«¬¬O' "$System_Model"
+        writelog '¬d¸ß¾÷«¬¦¨¥\'
     fi
 }
 
 GetMachine_Serial() {
     Machine_Serial=$(dmidecode -s system-serial-number)
     if [ "${Machine_Serial}" == "" ]; then
-        writelog 'æŸ¥è©¢æ©Ÿè™Ÿå¤±æ•—'
+        writelog '¬d¸ß¾÷¸¹¥¢±Ñ'
     else
-        writelog 'æ­¤æ©Ÿå™¨æ©Ÿè™Ÿæ˜¯' "$Machine_Serial"
-        writelog 'æŸ¥è©¢æ©Ÿè™ŸæˆåŠŸ'
+        writelog '¦¹¾÷¾¹¾÷¸¹¬O' "$Machine_Serial"
+        writelog '¬d¸ß¾÷¸¹¦¨¥\'
     fi
 }
 

@@ -12,11 +12,11 @@
 ###############################################################################
 
 comfirm_and_show_warning() {
-    echo "supportconfig é è¨ˆåŸ·è¡Œæ™‚é–“éœ€è¦ 1~10 åˆ†é˜ã€‚"
-    echo "è«‹å‹¿å¤šæ¬¡åŸ·è¡Œ"
-    echo "ç”¢ç”Ÿæª”åç‚º nts_${file_prefix}.tgz"
+    echo "supportconfig ¹w­p°õ¦æ®É¶¡»Ý­n 1~10 ¤ÀÄÁ¡C"
+    echo "½Ð¤Å¦h¦¸°õ¦æ"
+    echo "²£¥ÍÀÉ¦W¬° nts_${file_prefix}.tgz"
     echo ''
-    echo "æ˜¯å¦è¦ç¹¼çºŒæ”¶é›†(Y/N)ï¼Ÿ"
+    echo "¬O§_­nÄ~Äò¦¬¶°(Y/N)¡H"
     echo 'Do you want Use supportconfig to gather system configuration information?(Y/N)'
     read input
     if [[ "${input}" =~ [Yy]+ ]]; then
@@ -41,12 +41,12 @@ execute_supportconfig() {
     if [[ $rc -eq 0 ]]; then
         echo ''
         echo ''
-        writelog "supportconfig æ”¶é›†æˆåŠŸï¼Œæª”æ¡ˆç‚º ${OUTPUT_DIR}/nts_${file_prefix}.tgz"
+        writelog "supportconfig ¦¬¶°¦¨¥\¡AÀÉ®×¬° ${OUTPUT_DIR}/nts_${file_prefix}.tgz"
         echo "supportconfig done, output at  ${OUTPUT_DIR}/nts_${file_prefix}.tgz"
         echo ''
         echo ''
     else
-        err "supportconfig æ”¶é›†å¤±æ•—."
+        err "supportconfig ¦¬¶°¥¢±Ñ."
         echo "supportconfig fail."
     fi
 
@@ -55,11 +55,11 @@ execute_supportconfig() {
 remove_old_support_dir() {
     # remove *.bak, then rename *.tgz to *.bak
     for filename in ${OUTPUT_DIR}/*.tgz.bak; do
-        rm $filename >/dev/null 2>&1 && writelog "åˆªé™¤ $filename"
+        rm $filename >/dev/null 2>&1 && writelog "§R°£ $filename"
     done
 
     for filename in ${OUTPUT_DIR}/*.tgz; do
-        mv "$filename" "${filename}.bak" >/dev/null 2>&1 && writelog "å°‡ $filename æ›´åç‚º ${filename}.bak"
+        mv "$filename" "${filename}.bak" >/dev/null 2>&1 && writelog "±N $filename §ó¦W¬° ${filename}.bak"
         rm ${OUTPUT_DIR}/*.md5 >/dev/null 2>&1
     done
 }
