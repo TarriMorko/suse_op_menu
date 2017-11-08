@@ -12,11 +12,11 @@
 ###############################################################################
 
 comfirm_and_show_warning() {
-    echo "supportconfig ¹w­p°õ¦æ®É¶¡»Ý­n 1~10 ¤ÀÄÁ¡C"
-    echo "½Ð¤Å¦h¦¸°õ¦æ"
-    echo "²£¥ÍÀÉ¦W¬° nts_${file_prefix}.tgz"
+    echo "supportconfig ï¿½wï¿½pï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½Ý­n 1~10 ï¿½ï¿½ï¿½ï¿½ï¿½C"
+    echo "ï¿½Ð¤Å¦hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
+    echo "ï¿½ï¿½ï¿½ï¿½ï¿½É¦Wï¿½ï¿½ nts_${file_prefix}.tgz"
     echo ''
-    echo "¬O§_­nÄ~Äò¦¬¶°(Y/N)¡H"
+    echo "ï¿½Oï¿½_ï¿½nï¿½~ï¿½ò¦¬¶ï¿½(Y/N)ï¿½H"
     echo 'Do you want Use supportconfig to gather system configuration information?(Y/N)'
     read input
     if [[ "${input}" =~ [Yy]+ ]]; then
@@ -27,26 +27,26 @@ comfirm_and_show_warning() {
 }
 
 execute_supportconfig() {
-    # supportconfig -m -g -R ${OUTPUT_DIR} -B "$(hostname)_$(date +%Y%m%d_%H%M%S)"
+    # supportconfig -g -R ${OUTPUT_DIR} -B "$(hostname)_$(date +%Y%m%d_%H%M%S)"
     if [ "${OUTPUT_DIR}" == "" ]; then
         echo "OUTPUT_DIR variable must be set."
         return 1
     fi
 
-    writelog "Start supportconfig -m -g -R ${OUTPUT_DIR} -B ${file_prefix}"
-    supportconfig -m -g -R ${OUTPUT_DIR} -B ${file_prefix}
+    writelog "Start supportconfig -g -R ${OUTPUT_DIR} -B ${file_prefix}"
+    supportconfig -g -R ${OUTPUT_DIR} -B ${file_prefix}
     rc=$?
     chmod -R 775 ${OUTPUT_DIR}
     chmod 744 ${OUTPUT_DIR}/nts_${file_prefix}.tgz
     if [[ $rc -eq 0 ]]; then
         echo ''
         echo ''
-        writelog "supportconfig ¦¬¶°¦¨¥\¡AÀÉ®×¬° ${OUTPUT_DIR}/nts_${file_prefix}.tgz"
+        writelog "supportconfig ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½Aï¿½É®×¬ï¿½ ${OUTPUT_DIR}/nts_${file_prefix}.tgz"
         echo "supportconfig done, output at  ${OUTPUT_DIR}/nts_${file_prefix}.tgz"
         echo ''
         echo ''
     else
-        err "supportconfig ¦¬¶°¥¢±Ñ."
+        err "supportconfig ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½."
         echo "supportconfig fail."
     fi
 
@@ -55,11 +55,11 @@ execute_supportconfig() {
 remove_old_support_dir() {
     # remove *.bak, then rename *.tgz to *.bak
     for filename in ${OUTPUT_DIR}/*.tgz.bak; do
-        rm $filename >/dev/null 2>&1 && writelog "§R°£ $filename"
+        rm $filename >/dev/null 2>&1 && writelog "ï¿½Rï¿½ï¿½ $filename"
     done
 
     for filename in ${OUTPUT_DIR}/*.tgz; do
-        mv "$filename" "${filename}.bak" >/dev/null 2>&1 && writelog "±N $filename §ó¦W¬° ${filename}.bak"
+        mv "$filename" "${filename}.bak" >/dev/null 2>&1 && writelog "ï¿½N $filename ï¿½ï¿½Wï¿½ï¿½ ${filename}.bak"
         rm ${OUTPUT_DIR}/*.md5 >/dev/null 2>&1
     done
 }
@@ -68,7 +68,6 @@ main() {
     comfirm_and_show_warning
     remove_old_support_dir
     execute_supportconfig || return $to_adv_opmenu
-    $ROOT_DIR/scp_to_file_server.sh ${OUTPUT_DIR}/nts_${file_prefix}.tgz
 
 }
 main

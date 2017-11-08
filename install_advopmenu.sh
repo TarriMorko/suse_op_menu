@@ -31,10 +31,7 @@ chmod 740 r3_execute_supportconfig.sh
 chmod 740 r4_check_FS_size.sh
 chmod 740 r5_show_cpu_usage.sh
 chmod 740 r6_show_mem_usage.sh
-chmod 740 r7_show_io_usage.sh
-chmod 740 r8_copy_to_file_server.sh
 chmod 740 rotatelogs.sh
-chmod 740 scp_to_file_server.sh
 chmod 740 writelog.sh
 
 chown root:system mw_hc2.err
@@ -46,8 +43,5 @@ chown root:system r3_execute_supportconfig.sh
 chown root:system r4_check_FS_size.sh
 chown root:system r5_show_cpu_usage.sh
 chown root:system r6_show_mem_usage.sh
-chown root:system r7_show_io_usage.sh
-chown root:system r8_copy_to_file_server.sh
 chown root:system rotatelogs.sh
-chown root:system scp_to_file_server.sh
 chown root:system writelog.sh
