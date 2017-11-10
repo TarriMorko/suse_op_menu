@@ -1,16 +1,16 @@
-SCRIPT_VERSION=1.0.0
+SCRIPT_VERSION=1.0.1
 
 if ! [ -f /src/mwadmin/mwadmin.sh ]; then
     echo ""
     echo "No /src/mwadmin/mwadmin.sh !  script STOP!"
-    echo "請手動安裝"
+    echo "嚙請歹蕭呇w嚙踝蕭"
     echo ""
     exit
 fi
 
 if ! [ -f /etc/SuSE-release ]; then
     echo ""
-    echo "這個 script 只能給 SuSE 用喔!"
+    echo "嚙緻嚙踝蕭 script 嚙線嚙賞給 SuSE 嚙諄喉蕭!"
     echo ""
     exit
 fi

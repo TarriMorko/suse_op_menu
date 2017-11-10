@@ -20,7 +20,7 @@ i #!/bin/sh
 #export LC_ALL=zh_TW.UTF-8
 
 #### Scrtip Setting Start ####
-SCRIPT_VERSION=1.0.0
+SCRIPT_VERSION=1.0.1
 export ScriptName="mw_hc2.sh"
 export ROOT_DIR=$(dirname -- $0)
 export OUTPUT_ROOT="/source"
@@ -69,8 +69,6 @@ show_main_menu() {
       4. Check FileSystem Size
       5. Show CPU usage
       6. Show Memory usage
-      7. Show disk/IO usage
-      8. Copy a file to TSM server
       
       q.QUIT
 
@@ -93,8 +91,6 @@ main() {
         4) ./r4_check_FS_size.sh ;;
         5) ./r5_show_cpu_usage.sh ;;
         6) ./r6_show_mem_usage.sh ;;
-        7) ./r7_show_io_usage.sh ;;
-        8) ./r8_copy_to_file_server.sh ;;
         [Qq])
             echo ''
             echo 'Thanks !! bye bye ^-^ !!!'
