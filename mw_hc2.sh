@@ -1,4 +1,4 @@
-i #!/bin/sh
+#!/bin/sh
 #
 #
 ###############################################################################
@@ -20,7 +20,7 @@ i #!/bin/sh
 #export LC_ALL=zh_TW.UTF-8
 
 #### Scrtip Setting Start ####
-SCRIPT_VERSION=1.0.1
+SCRIPT_VERSION=1.0.0
 export ScriptName="mw_hc2.sh"
 export ROOT_DIR=$(dirname -- $0)
 export OUTPUT_ROOT="/source"
