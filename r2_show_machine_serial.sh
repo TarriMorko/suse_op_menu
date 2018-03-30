@@ -1,4 +1,4 @@
-#!/bin/bash
+ï»¿#!/bin/bash
 #
 #
 ###############################################################################
@@ -9,20 +9,20 @@
 GetSystemModel() {
     System_Model=$(dmidecode -s system-product-name)
     if [ "${System_Model}" == "" ]; then
-        writelog '¬d¸ß¾÷«¬¥¢±Ñ'
+        writelog 'Query product-name failed'
     else
-        writelog '¦¹¾÷¾¹¾÷«¬¬O' "$System_Model"
-        writelog '¬d¸ß¾÷«¬¦¨¥\'
+        writelog 'product-name is' "$System_Model"
+        writelog 'Query success'
     fi
 }
 
 GetMachine_Serial() {
     Machine_Serial=$(dmidecode -s system-serial-number)
     if [ "${Machine_Serial}" == "" ]; then
-        writelog '¬d¸ß¾÷¸¹¥¢±Ñ'
+        writelog 'Query serial-number failed'
     else
-        writelog '¦¹¾÷¾¹¾÷¸¹¬O' "$Machine_Serial"
-        writelog '¬d¸ß¾÷¸¹¦¨¥\'
+        writelog 'serial-number is' "$Machine_Serial"
+        writelog 'Query success'
     fi
 }
 

@@ -3,14 +3,13 @@ SCRIPT_VERSION=1.0.1
 if ! [ -f /src/mwadmin/mwadmin.sh ]; then
     echo ""
     echo "No /src/mwadmin/mwadmin.sh !  script STOP!"
-    echo "�Ф�ʦw��"
     echo ""
     exit
 fi
 
 if ! [ -f /etc/SuSE-release ]; then
     echo ""
-    echo "�o�� script �u�൹ SuSE �γ�!"
+    echo "This script is for SuSE Linux!"
     echo ""
     exit
 fi

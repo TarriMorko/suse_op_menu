@@ -12,11 +12,11 @@
 ###############################################################################
 
 comfirm_and_show_warning() {
-    echo "supportconfig ¹w­p°õ¦æ®É¶¡»Ý­n 1~10 ¤ÀÄÁ¡C"
-    echo "½Ð¤Å¦h¦¸°õ¦æ"
-    echo "²£¥ÍÀÉ¦W¬° nts_${file_prefix}.tgz"
+    echo "supportconfig will takes about 15-20 minutes to produce th log files."
+    echo "DO NOT execute twice."
+    echo "Log file name is nts_${file_prefix}.tgz"
     echo ''
-    echo "¬O§_­nÄ~Äò¦¬¶°(Y/N)¡H"
+    echo "continue(Y/N)ï¼Ÿ"
     echo 'Do you want Use supportconfig to gather system configuration information?(Y/N)'
     read input
     if [[ "${input}" =~ [Yy]+ ]]; then
@@ -41,13 +41,13 @@ execute_supportconfig() {
     if [[ $rc -eq 0 ]]; then
         echo ''
         echo ''
-        writelog "supportconfig ¦¬¶°¦¨¥\¡AÀÉ®×¬° ${OUTPUT_DIR}/nts_${file_prefix}.tgz"
+        writelog "supportconfig done at ${OUTPUT_DIR}/nts_${file_prefix}.tgz"
         echo "supportconfig done, output at  ${OUTPUT_DIR}/nts_${file_prefix}.tgz"
         echo ''
         echo ''
     else
-        err "supportconfig ¦¬¶°¥¢±Ñ."
-        echo "supportconfig fail."
+        err "supportconfig failed."
+        echo "supportconfig failed."
     fi
 
 }
@@ -55,11 +55,11 @@ execute_supportconfig() {
 remove_old_support_dir() {
     # remove *.bak, then rename *.tgz to *.bak
     for filename in ${OUTPUT_DIR}/*.tgz.bak; do
-        rm $filename >/dev/null 2>&1 && writelog "§R°£ $filename"
+        rm $filename >/dev/null 2>&1 && writelog "DELETE $filename"
     done
 
     for filename in ${OUTPUT_DIR}/*.tgz; do
-        mv "$filename" "${filename}.bak" >/dev/null 2>&1 && writelog "±N $filename §ó¦W¬° ${filename}.bak"
+        mv "$filename" "${filename}.bak" >/dev/null 2>&1 && writelog "Move $filename to ${filename}.bak"
         rm ${OUTPUT_DIR}/*.md5 >/dev/null 2>&1
     done
 }

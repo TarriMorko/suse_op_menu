@@ -23,22 +23,22 @@ check_cpu_usage() {
     echo ''
     echo ''
     echo "This CPU_Highest_usage user is"
-    writelog "CPU 使用率最高的使用者是
+    writelog "The Most CPU consumer is
 
     \" $CPU_Highest_owner \""
     echo ''
     echo ''
-    writelog "PID 是 $CPU_Highest_PID"
+    writelog "PID $CPU_Highest_PID"
 
     return 0
 }
 
 collect_log_if_CPU_high() {
     if [ ${CPU_Highest_usage%.*} -ge $CPU_threshold ]; then
-        writelog "請通知系統值班人員處理：行程 $CPU_Highest_process 的 CPU 使用率達到 $CPU_Highest_usage%"
-        writelog "PID 是 $CPU_Highest_PID"
+        writelog "Please call the office to help: process $CPU_Highest_process use $CPU_Highest_usage% CPU"
+        writelog "PID $CPU_Highest_PID"
         writelog "process: $CPU_Highest_process cpu high $CPU_Highest_usage%"
-        writelog "PID is  $CPU_Highest_PID"
+        writelog "PID is $CPU_Highest_PID"
         $ROOT_DIR/r3_execute_supportconfig.sh
     fi
     return 0

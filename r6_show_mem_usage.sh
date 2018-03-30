@@ -23,20 +23,20 @@ check_mem_usage() {
     echo ''
     echo ''
     echo "This Memory_Highest_usage user is"
-    writelog "°O¾ÐÅé¨Ï¥Î²v³Ì°ªªº¨Ï¥ÎªÌ¬O
+    writelog "The Most Memory consumer is
 
     \" $mem_Highest_owner \""
     echo ''
     echo ''
-    echo "PID ¬O $mem_Highest_PID"
+    echo "PID is $mem_Highest_PID"
 
     return 0
 }
 
 collect_log_if_mem_high() {
     if [ ${mem_Highest_usage%.*} -ge $mem_threshold ]; then
-        writelog "½Ð³qª¾¨t²Î­È¯Z¤H­û³B²z¡G¦æµ{ $mem_Highest_process ªº °O¾ÐÅé ¨Ï¥Î²v¹F¨ì $mem_Highest_usage%"
-        writelog "PID ¬O $mem_Highest_PID"
+        writelog "Please call the office to help: process $mem_Highest_process use $mem_Highest_usage% memory."
+        writelog "PID æ˜¯ $mem_Highest_PID"
         writelog "process: $mem_Highest_process mem high $mem_Highest_usage%"
         writelog "PID is  $mem_Highest_PID"
         $ROOT_DIR/r3_execute_supportconfig.sh
