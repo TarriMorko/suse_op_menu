@@ -1,4 +1,4 @@
-SCRIPT_VERSION=1.0.1
+SCRIPT_VERSION=1.0.2
 
 if ! [ -f /src/mwadmin/mwadmin.sh ]; then
     echo ""
